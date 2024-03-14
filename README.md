@@ -1,6 +1,6 @@
-# \[Group name\]
+# \[Inagural Procejt 2024\]
 
-**Group members:**
+**Christian, Nicholas og Carl Emil:**
 
 Christian 
 - B
