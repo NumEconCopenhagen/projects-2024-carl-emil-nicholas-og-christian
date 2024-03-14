@@ -1,6 +1,7 @@
 # \[Group name\]
 
 **Group members:**
+
 Christian 
 - B
 - C
