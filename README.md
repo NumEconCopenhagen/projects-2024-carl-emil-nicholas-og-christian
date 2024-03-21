@@ -1,8 +1,7 @@
 # \[Inagural Procejet 2024\]
 
 **Christian, Nicholas og Carl Emil:**
-
-Carl Emil der leger lidt rundt i VScode. 
+- fzw199
 - B
 - C
 
