@@ -1,6 +1,6 @@
 # Data analysis project
 
-Our project is titled **Rolling the DICE in metaanalysis** and is about determining the functional form of the damage function in nobel laureant William D. Nordhaus's new 2023-version of the Dynamic Integrated Climate-Economy model (DICE).
+Our project is titled **Rolling the DICE in metaanalysis** and is about determining the functional form of the damage function in William D. Nordhaus's new 2023-version of the Dynamic Integrated Climate-Economy model (DICE). We find the functional form through a metanalysis of studies from leading climate-economy experts. The datapoints from these studies have been summarized in Nordhaus' own metaanalysis as well as in Richard Tol's metaanalysis. The datapoints consists of increases in global temperature above the mean in 1920 and the corresponding loss in global GDP. 
 
 The **results** of the project can be seen from running [dataproject.ipynb](dataproject.ipynb).
 
