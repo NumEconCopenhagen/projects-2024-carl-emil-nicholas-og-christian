@@ -6,8 +6,8 @@ The **results** of the project can be seen from running [dataproject.ipynb](data
 
 We apply the **following datasets**:
 
-1. Nordhaus' data.csv (*source*) 
-1. Tol's.csv (*source*)
+1. NordhausD.csv (*source*) 
+1. TolD.csv (*source*)
 
 **Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires the following installations:
 
