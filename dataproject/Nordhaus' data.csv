@@ -1,52 +1,57 @@
-Study,Year,Temp,Impact
-Tol,1994,2.5,-1.9
+Study,Year,Temp (celsius),Impact (%)
+Cline,1992,2.5,-1.1
+Cline,1992,10,-6
+Nordhaus a,1994,3,-1.33
 Nordhaus b,1994,3,-3.6
+Nordhaus b,1994,6,-10.4
+Tol,1994,2.5,-1.9
 Frankhauser,1995,2.5,-1.4
-Schauer,1995,2.5,-5.22
 Nordhays and Yang,1996,2.5,-1.7
-Plambeck and Hope,1996,2.5,-2.9
+Mendelsohn et al.,2000,2.2,0.03
+Mendelsohn et al.,2000,2.2,0.07
+Mendelsohn et al.,2000,2,0.08
+Mendelsohn et al.,2000,3.5,0.01
 Nordhaus and Boyer,2000,2.5,-1.5
-Berz,2001,2.5,-1.5
-Smith et al. (2001),2001,2.50,-9.00
-Smith et al. (2001),2001,1.00,-2.70
+Tol,2002,1,2.3
 Maddison,2003,3.1,-2.2
-Rehdanz and Maddison,2005,0.84,-0.32
 Rehdanz and Maddison,2005,1.24,-0.32
+Rehdanz and Maddison,2005,0.84,-0.32
+Hope,2006,4.085,-3.04
 Nordhaus,2006,3,-1.05
 Nordhaus,2008,3,-2.49
-Eboli et al.,2010,3.0,-1.35
 Nordhaus,2010,3.4,-2.8
-Weitzman (2010),2010,4.00,-8.87
-Ng and zhao,2011,1,-1.61
-Hope,2011,3.0,-0.7
 Maddison and Rehdanz,2011,4,-17.8
+Bosello et al.,2012,1.52,0.5
+Ronson and Mensbrugghe,2012,3.1,-2.14
+Ronson and Mensbrugghe,2012,5.5,-6
+Dellink,2012,2.5,-1.1
 Kemfert,2012,0.25,-0.17
 Hambel,2012,1,-0.3
-Dellink,2012,2.5,-1.1
-Ronson and Mensbrugghe,2012,3.1,-2.14
-Mc Callum et al.,2013,2.0,-0.7
-Mc Callum et al.,2013,4,-1.8
-WITCH,2015,2,-1.84
+Nordhaus,2013,3,-2.25
+FUND,2015,2,0.2
 FUND,2015,3,-0.17
-WITCH,2015,3,-3.72
 FUND,2015,4,-0.85
+WITCH,2015,2,-1.84
+WITCH,2015,3,-3.72
 WITCH,2015,4,-6.25
-Sartori and roson,2016,3,-0.7
+Burke et al.,2015,4.86,-23
 Roson and Sartori,2016,3.55,-1.72
 PAGE09,2017,2,-0.72
 PAGE09,2017,4,-2.9
-Pretis et al.,2018,1.1,-8
-Pretis et al.,2018,1.6,-13
-Takakura et al.,2018,1.6,-1.02
-Kompas et al.,2018,2.55,-1.77
-Kompas et al.,2018,3.55,-3
+PAGE09,2017,6,-6.51
 Takakura et al.,2018,3.6,-4.69
+Takakura et al.,2018,1.6,-1.02
+Kompas et al.,2018,3.55,-3
+Kompas et al.,2018,4.55,-7.24
+Kompas et al.,2018,2.55,-1.77
+Letta and Tol,2018,4.412,-1.88
+Pretis et al.,2018,1.6,-13
+Pretis et al.,2018,1.1,-8
 Dellink et al.,2019,2.1,-2
-Takakura et al.,2019,2.6,-2.24
 Dellink et al.,2019,3.6,-6
-Howard and sylvan,2020,3,-9.2
-Howard and sylvan,2021,1.2,-2.2
-Howard and sylvan,2021,3,-8.5
-Conte et al.,2021,3.7,-3.7
-Kahn et al.,2021,3.91,-7.64
+Takakura et al.,2019,2.6,-2.24
+Zhao et al.,2019,3.1,-2.42
+Kalkuhn and Wenz,2020,4.25,-7.4
+Kalkuhn and Wenz,2020,4.25,-13.4
 Newell et al.,2021,3.91,-2.53
+Kahn et al.,2021,3.91,-7.64
