@@ -7,33 +7,31 @@ import sympy as sm
 class Solowclass:
     def __init__(self):
         """
-        initialises class
+        Initializes the class.
         """
         self.par = SimpleNamespace()
         self.sim = SimpleNamespace()
 
     def paramtervalues(self):
         """
-          Defining parameter values for both the baseline model and the extended model. 
+        Defines parameter values for both the baseline model and the extended model.
+
         """ 
 
         par=self.par
 
-        # ISN: JEG HAR INDSAT VÆRDIERNE FRA EKSAMENSSÆTTET
-        # Baseline Solow model
+        # Baseline Solow model parameters
         par.alpha=0.2
         par.s=0.3
         par.n=0.01 
         par.g=0.027
         par.delta=0.05 
 
-        # Extended Solow model
+        # Extended Solow model parameters
         par.beta=0.6
         par.eps=0.2
         par.sE=0.005
         par.phi=0.5
-
-    # ISN: KOPIERET ASH'S LØSNINGER MEN INDSAT PARAMETERVÆRDIER 
 
     def solve_ss_z_par(self, zss):
 
