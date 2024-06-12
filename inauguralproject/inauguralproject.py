@@ -122,3 +122,5 @@ class EdgeworthBoxClass:
         plt.legend()
         plt.grid(True)
         plt.show()
+
+
