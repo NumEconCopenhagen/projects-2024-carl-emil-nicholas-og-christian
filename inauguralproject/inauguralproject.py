@@ -91,3 +91,34 @@ class EdgeworthBoxClass:
         
         plt.title('Market Equilibrium Allocations in the Edgeworth Box')
         plt.show()
+
+     # e. Define a function to calculate market clearing errors
+    def market_clearing_errors(self, p1_values):
+        errors = []
+        for p1 in p1_values:
+            p2 = 1  # Numeraire price
+            xA1 = self.demand_A_x1(p1, p2)
+            xB1 = self.demand_B_x1(p1, p2)
+            xA2 = self.demand_A_x2(p1, p2)
+            xB2 = self.demand_B_x2(p1, p2)
+            
+            e1 = xA1 + xB1 - (self.endowment_A[0] + self.endowment_B[0])
+            e2 = xA2 + xB2 - (self.endowment_A[1] + self.endowment_B[1])
+            
+            errors.append((p1, e1, e2))
+        return errors
+    
+    # f. Define a function to plot market clearing errors
+    def plot_market_clearing_errors(self, p1_values):
+        errors = self.market_clearing_errors(p1_values)
+        errors = np.array(errors)
+        
+        plt.figure(figsize=(10, 6))
+        plt.plot(errors[:, 0], errors[:, 1], label='Error in good 1 market clearing')
+        plt.plot(errors[:, 0], errors[:, 2], label='Error in good 2 market clearing', color='orange')
+        plt.xlabel('$p_1$')
+        plt.ylabel('Error')
+        plt.title('Market Clearing Errors')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
