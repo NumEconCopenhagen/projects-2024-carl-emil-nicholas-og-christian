@@ -141,3 +141,33 @@ class EdgeworthBoxClass:
         xB1 = self.demand_B_x1(p1, p2)
         xB2 = self.demand_B_x2(p1, p2)
         return (xA1, xA2), (xB1, xB2)
+    
+
+    # g. Define a function to maximize utility for A with restricted prices in P1
+    def maximize_utility_A_restricted(self, p1_values):
+        best_p1 = None
+        max_utility = -np.inf
+        for p1 in p1_values:
+            xB1 = self.demand_B_x1(p1, 1)
+            xB2 = self.demand_B_x2(p1, 1)
+            xA1 = 1 - xB1
+            xA2 = 1 - xB2
+            utility_A = self.u_A(xA1, xA2)
+            if utility_A > max_utility:
+                max_utility = utility_A
+                best_p1 = p1
+        return best_p1, max_utility
+
+    # h. Define a function to maximize utility for A with any positive price
+    def maximize_utility_A_unrestricted(self):
+        def negative_utility_A(p1):
+            xB1 = self.demand_B_x1(p1, 1)
+            xB2 = self.demand_B_x2(p1, 1)
+            xA1 = 1 - xB1
+            xA2 = 1 - xB2
+            return -self.u_A(xA1, xA2)
+        
+        result = minimize_scalar(negative_utility_A, bounds=(0.01, 10), method='bounded')
+        best_p1 = result.x
+        max_utility = -result.fun
+        return best_p1, max_utility
