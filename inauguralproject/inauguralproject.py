@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from types import SimpleNamespace
 from scipy import optimize 
-from scipy.optimize import minimize
+from scipy.optimize import minimize_scalar
 
 # 2. Defines the class that are used in the project
 class EdgeworthBoxClass:
@@ -124,3 +124,20 @@ class EdgeworthBoxClass:
         plt.show()
 
 
+    def market_clearing_error(self, p1):
+        p2 = 1  # Numeraire price
+        xA1 = self.demand_A_x1(p1, p2)
+        xB1 = self.demand_B_x1(p1, p2)
+        return (xA1 + xB1 - (self.endowment_A[0] + self.endowment_B[0]))**2
+    
+    def find_market_clearing_price(self):
+        result = minimize_scalar(self.market_clearing_error, bounds=(0.5, 2.5), method='bounded')
+        return result.x, result.fun
+    
+    def allocation_at_price(self, p1):
+        p2 = 1  # Numeraire price
+        xA1 = self.demand_A_x1(p1, p2)
+        xA2 = self.demand_A_x2(p1, p2)
+        xB1 = self.demand_B_x1(p1, p2)
+        xB2 = self.demand_B_x2(p1, p2)
+        return (xA1, xA2), (xB1, xB2)
