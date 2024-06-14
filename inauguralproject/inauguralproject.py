@@ -1,16 +1,16 @@
-# 1. Import relevant packages
-import matplotlib.pyplot as plt
-import numpy as np
+# Import relevant packages
+import matplotlib.pyplot as plt 
+import numpy as np #
 from types import SimpleNamespace
 from scipy import optimize 
 from scipy.optimize import minimize_scalar
 from scipy.optimize import minimize
 
 
-# 2. Defines the class that are used in the project
+# Defines the class that are used in the project
 class EdgeworthBoxClass:
-    # a. Define the init function
-    def __init__(self, alpha, beta, endowment_A, num_pairs=50):
+    # Define the parameters of the model
+    def __init__(self, alpha, beta, endowment_A, num_pairs=50): #
         self.alpha = alpha
         self.beta = beta
         self.endowment_A = endowment_A
@@ -24,7 +24,7 @@ class EdgeworthBoxClass:
         # 
         self.num_pairs = num_pairs
 
-    # c. Define the utility and demand functions for the consumers
+    # Define the utility and demand functions for the consumers
     
     # 1. Define the utility function for consumer A
     def u_A(self, x_A1, x_A2):
@@ -49,15 +49,15 @@ class EdgeworthBoxClass:
     def demand_B_x2(self, p1, p2):
         return (1 - self.beta) * (p1*self.endowment_B[0] + p2*self.endowment_B[1]) / p2
 
-    # d. Define the function that finds pareto improvements
+    # Define the function that finds pareto improvements
     def pareto_improvements(self):
         # Create an empty list
         pareto_improvements = []
         # Using a nested for loop to find and define x_A1 and x_A2
-        for i in range(self.N + 1):
+        for i in range(self.N + 1): # Using the range function to iterate over the number of allocations
             
-            x_A1 = i / self.N
-            for j in range(self.N + 1):
+            x_A1 = i / self.N 
+            for j in range(self.N + 1): 
                 
                 x_A2 = j / self.N
                 x_B1 = 1 - x_A1
@@ -73,12 +73,13 @@ class EdgeworthBoxClass:
         # Return the list of pareto improvements
         return pareto_improvements
     
-    # i. Define a function that plots the Edgeworth Box
-    def plot_edgeworth_box(self):
+    # Question 1 - Define a function that plots the Edgeworth Box
+    def plot_edgeworth_box(self): 
         result = self.pareto_improvements()
         result = np.array(result)
         fig, ax = plt.subplots(figsize=(7.5, 7.5))
 
+        # Setting the labels for the x and y axis 
         ax.set_xlabel("$x_1^A$")  # x-axis label
         ax.set_ylabel("$x_2^A$")  # y-axis label
         
@@ -86,15 +87,17 @@ class EdgeworthBoxClass:
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
 
+        # Plotting the endowment with a square marker
         ax.scatter(self.endowment_A[0], self.endowment_A[1], marker='s', color='black', label='Endowment')
         ax.scatter(result[:, 0], result[:, 1], color='blue', label='Pareto Improvements')
-
-        ax.legend()
+        
+        
+        ax.legend() # this will show the legend in the plot
         
         plt.title('Market Equilibrium Allocations in the Edgeworth Box')
         plt.show()
 
-     # e. Define a function to calculate market clearing errors
+     # Question 2 - Define a function to calculate market clearing errors
     def market_clearing_errors(self, p1_values):
         errors = []
         for p1 in p1_values:
@@ -110,7 +113,7 @@ class EdgeworthBoxClass:
             errors.append((p1, e1, e2))
         return errors
     
-    # f. Define a function to plot market clearing errors
+    # Question 2 - Define a function to plot market clearing errors
     def plot_market_clearing_errors(self, p1_values):
         errors = self.market_clearing_errors(p1_values)
         errors = np.array(errors)
@@ -125,13 +128,14 @@ class EdgeworthBoxClass:
         plt.grid(True)
         plt.show()
 
-
+    # Question 3 - Define a function to find the market clearing price
     def market_clearing_error(self, p1):
         p2 = 1  # Numeraire price
         xA1 = self.demand_A_x1(p1, p2)
         xB1 = self.demand_B_x1(p1, p2)
         return (xA1 + xB1 - (self.endowment_A[0] + self.endowment_B[0]))**2
     
+    # Find the market claring price using the minimize_scalar function
     def find_market_clearing_price(self):
         result = minimize_scalar(self.market_clearing_error, bounds=(0.5, 2.5), method='bounded')
         return result.x, result.fun
@@ -144,7 +148,7 @@ class EdgeworthBoxClass:
         xB2 = self.demand_B_x2(p1, p2)
         return (xA1, xA2), (xB1, xB2)
     
-        # g. Define a function to maximize utility for A with restricted prices in P1
+    # Question 4.a - Define a function to maximize utility for A with restricted prices in P1
     def maximize_utility_A_restricted(self, p1_values):
         max_utility_A_restricted = -np.inf
         best_p1_restricted = None
@@ -165,7 +169,7 @@ class EdgeworthBoxClass:
         else:
             return None, None, None, None
 
-    # h. Define a function to maximize utility for A with any positive price
+    # Question 4.b - Define a function to maximize utility for A with any positive price
     def maximize_utility_A_unrestricted(self):
         def objective(p1, return_neg=True):
             xB1, xB2 = self.demand_B_x1(p1, 1), self.demand_B_x2(p1, 1)
@@ -189,7 +193,7 @@ class EdgeworthBoxClass:
         else:
             return None, None, None, None
 
-    # i. Define a function to maximize utility for A within the restricted set C (5.a)
+    # Question 5.a -  Define a function to maximize utility for A within the restricted set C 
     def maximize_utility_A_restricted_C(self):
         max_utility = -np.inf
         best_allocation_A = None
@@ -209,7 +213,7 @@ class EdgeworthBoxClass:
         
         return best_allocation_A, best_allocation_B
 
-    # k. Define a function to maximize utility for A with no restrictions besides the endowments (5.b)
+    # Question 5.b - Define a function to maximize utility for A with no restrictions besides the endowments
     def maximize_utility_A_no_restrictions(self):
         def negative_utility_A(x):
             xA1, xA2 = x 
@@ -232,7 +236,7 @@ class EdgeworthBoxClass:
         else:
             return None, None, None
 
-    # l. Define a function to maximize the total utility for society (6.a)
+    # Question 6.a - Define a function to maximize the total utility for society
     def maximize_total_utility(self):
         def total_utility(x):
             xA1, xA2, xB1, xB2 = x
@@ -255,7 +259,7 @@ class EdgeworthBoxClass:
         else:
             return None, None, None
 
-     # m. Define a function to plot the allocations in Edgeworth Box (6.b)
+     # Question 6.b - Define a function to plot the allocations in Edgeworth Box
     def plot_edgeworth_box_with_allocations(self, allocations):
         result = self.pareto_improvements()
         result = np.array(result)
@@ -284,7 +288,7 @@ class EdgeworthBoxClass:
         plt.show()
 
 
-    # m. Define a function to get the allocations from previous questions (6.b)
+    # m. Define a function to get the allocations from previous questions
     def get_allocations(self):
         allocations = [
             ("3", (0.373, 0.704), (0.627, 0.296)),
@@ -296,6 +300,8 @@ class EdgeworthBoxClass:
         ]
         return allocations
 
+
+# Question 7 and 8 - Define the class RandomEndowments
 class RandomEndowments:
     def __init__(self, alpha=1/3, beta=2/3):
         self.alpha = alpha
