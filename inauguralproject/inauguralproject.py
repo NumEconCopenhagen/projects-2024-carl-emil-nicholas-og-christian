@@ -280,7 +280,7 @@ class EdgeworthBoxClass:
 
         # Plot the allocations with transparency
         for alloc in allocations:
-            label, allocation_A, allocation_B = alloc
+            label, allocation_A, allocation_B = alloc 
             ax.scatter(allocation_A[0], allocation_A[1], label=label, alpha=1)
         
         ax.legend()
@@ -288,7 +288,7 @@ class EdgeworthBoxClass:
         plt.show()
 
 
-    # m. Define a function to get the allocations from previous questions
+    # Define a function to get the allocations from previous questions
     def get_allocations(self):
         allocations = [
             ("3", (0.373, 0.704), (0.627, 0.296)),
