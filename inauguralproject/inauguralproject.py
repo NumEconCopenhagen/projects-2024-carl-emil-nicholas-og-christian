@@ -295,3 +295,56 @@ class EdgeworthBoxClass:
             ("6.a", (0.333, 0.667), (0.667, 0.333))
         ]
         return allocations
+
+class RandomEndowments:
+    def __init__(self, alpha=1/3, beta=2/3):
+        self.alpha = alpha
+        self.beta = beta
+
+    def generate_random_endowments(self, seed=1992, num_samples=50):
+        np.random.seed(seed)
+        omega_A = np.random.uniform(0, 1, (num_samples, 2))
+        omega_B = 1 - omega_A
+        return omega_A, omega_B
+
+    def plot_random_endowments(self, omega_A):
+        fig, ax = plt.subplots(figsize=(7.5, 7.5))
+        ax.scatter(omega_A[:, 0], omega_A[:, 1], color='green', label='$\omega_A$ samples', alpha=0.5)
+        ax.set_xlabel('$\omega_{1A}$')
+        ax.set_ylabel('$\omega_{2A}$')
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_title('Random Set W with 50 Elements')
+        ax.grid(True)
+        ax.legend()
+        plt.show()
+
+    def market_equilibrium(self, omega):
+        def objective(p):
+            xA1_star = self.alpha * (omega[0] + p * omega[1]) / p
+            xB1_star = self.beta * ((1 - omega[0]) + p * (1 - omega[1])) / p
+            error = np.abs(xA1_star + xB1_star - 1)
+            return error
+        
+        res = minimize(objective, 0.5, bounds=[(0.01, 5)])
+        p1_star = res.x[0]
+        xA1_star = self.alpha * (omega[0] + p1_star * omega[1]) / p1_star
+        xA2_star = (1 - self.alpha) * (omega[0] + p1_star * omega[1])
+        xB1_star = self.beta * ((1 - omega[0]) + p1_star * (1 - omega[1])) / p1_star
+        xB2_star = (1 - self.beta) * ((1 - omega[0]) + p1_star * (1 - omega[1]))
+        return xA1_star, xA2_star, xB1_star, xB2_star
+
+    def plot_market_equilibrium(self, omega_A):
+        fig, ax = plt.subplots(figsize=(7.5, 7.5))
+        for omega in omega_A:
+            xA1_star, xA2_star, xB1_star, xB2_star = self.market_equilibrium(omega)
+            ax.scatter(omega[0], omega[1], color='green', alpha=0.5)
+            ax.scatter(xA1_star, xA2_star, color='blue', alpha=0.5)
+        ax.set_xlabel('$\omega_{1A}$')
+        ax.set_ylabel('$\omega_{2A}$')
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_title('Market Equilibrium Allocations in the Edgeworth Box')
+        ax.grid(True)
+        ax.legend(['Initial Endowments', 'Equilibrium Allocations'])
+        plt.show()
