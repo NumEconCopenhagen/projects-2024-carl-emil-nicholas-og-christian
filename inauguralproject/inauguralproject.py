@@ -302,18 +302,18 @@ class EdgeworthBoxClass:
 
 
 # Question 7 and 8 - Define the class RandomEndowments
-class RandomEndowments:
-    def __init__(self, alpha=1/3, beta=2/3):
+class RandomEndowments: # Define the class RandomEndowments
+    def __init__(self, alpha=1/3, beta=2/3): 
         self.alpha = alpha
         self.beta = beta
 
-    def generate_random_endowments(self, seed=1992, num_samples=50):
-        np.random.seed(seed)
-        omega_A = np.random.uniform(0, 1, (num_samples, 2))
-        omega_B = 1 - omega_A
-        return omega_A, omega_B
+    def generate_random_endowments(self, seed=1992, num_samples=50): # Define a function to generate random endowments
+        np.random.seed(seed) # Set the seed
+        omega_A = np.random.uniform(0, 1, (num_samples, 2)) # Generate random endowments for consumer A
+        omega_B = 1 - omega_A # Generate random endowments for consumer B
+        return omega_A, omega_B #
 
-    def plot_random_endowments(self, omega_A):
+    def plot_random_endowments(self, omega_A): # Define a function to plot the random endowments
         fig, ax = plt.subplots(figsize=(7.5, 7.5))
         ax.scatter(omega_A[:, 0], omega_A[:, 1], color='green', label='$\omega_A$ samples', alpha=0.5)
         ax.set_xlabel('$\omega_{1A}$')
@@ -325,12 +325,12 @@ class RandomEndowments:
         ax.legend()
         plt.show()
 
-    def market_equilibrium(self, omega):
+    def market_equilibrium(self, omega): # Define a function to find the market equilibrium
         def objective(p):
-            xA1_star = self.alpha * (omega[0] + p * omega[1]) / p
-            xB1_star = self.beta * ((1 - omega[0]) + p * (1 - omega[1])) / p
-            error = np.abs(xA1_star + xB1_star - 1)
-            return error
+            xA1_star = self.alpha * (omega[0] + p * omega[1]) / p # Calculate the optimal allocation for consumer A
+            xB1_star = self.beta * ((1 - omega[0]) + p * (1 - omega[1])) / p # Calculate the optimal allocation for consumer B
+            error = np.abs(xA1_star + xB1_star - 1) # Calculate the error
+            return error 
         
         res = minimize(objective, 0.5, bounds=[(0.01, 5)])
         p1_star = res.x[0]
