@@ -97,29 +97,29 @@ class EdgeworthBoxClass:
         plt.title('Market Equilibrium Allocations in the Edgeworth Box')
         plt.show()
 
-     # Question 2 - Define a function to calculate market clearing errors
+     # Question 2.1 - Define a function to calculate market clearing errors
     def market_clearing_errors(self, p1_values):
         errors = []
         for p1 in p1_values:
             p2 = 1  # Numeraire price
-            xA1 = self.demand_A_x1(p1, p2)
-            xB1 = self.demand_B_x1(p1, p2)
-            xA2 = self.demand_A_x2(p1, p2)
-            xB2 = self.demand_B_x2(p1, p2)
+            xA1 = self.demand_A_x1(p1, p2) # The demand for good 1 for consumer A
+            xB1 = self.demand_B_x1(p1, p2) # The demand for good 1 for consumer B
+            xA2 = self.demand_A_x2(p1, p2) # The demand for good 2 for consumer A
+            xB2 = self.demand_B_x2(p1, p2) # The demand for good 2 for consumer B
             
-            e1 = xA1 + xB1 - (self.endowment_A[0] + self.endowment_B[0])
-            e2 = xA2 + xB2 - (self.endowment_A[1] + self.endowment_B[1])
+            e1 = xA1 + xB1 - (self.endowment_A[0] + self.endowment_B[0]) # The error in the market clearing for good 1
+            e2 = xA2 + xB2 - (self.endowment_A[1] + self.endowment_B[1]) # The error in the market clearing for good 2
             
-            errors.append((p1, e1, e2))
-        return errors
+            errors.append((p1, e1, e2)) # Append the errors to the list
+        return errors # Return the list of errors
     
-    # Question 2 - Define a function to plot market clearing errors
+    # Question 2.2 - Define a function to plot market clearing errors
     def plot_market_clearing_errors(self, p1_values):
         errors = self.market_clearing_errors(p1_values)
         errors = np.array(errors)
         
         plt.figure(figsize=(10, 6))
-        plt.plot(errors[:, 0], errors[:, 1], label='Error in good 1 market clearing')
+        plt.plot(errors[:, 0], errors[:, 1], label='Error in good 1 market clearing') 
         plt.plot(errors[:, 0], errors[:, 2], label='Error in good 2 market clearing', color='orange')
         plt.xlabel('$p_1$')
         plt.ylabel('Error')
@@ -307,7 +307,7 @@ class RandomEndowments: # Define the class RandomEndowments
         self.alpha = alpha
         self.beta = beta
 
-    def generate_random_endowments(self, seed=1992, num_samples=50): # Define a function to generate random endowments
+    def generate_random_endowments(self, seed=1993, num_samples=50): # Define a function to generate random endowments
         np.random.seed(seed) # Set the seed
         omega_A = np.random.uniform(0, 1, (num_samples, 2)) # Generate random endowments for consumer A
         omega_B = 1 - omega_A # Generate random endowments for consumer B
