@@ -1,6 +1,6 @@
 # \[Inagural Procejet 2024\]
 
-**Christian, Nicholas og Carl Emil:**
+**Christian Skinhøj, Nicholas Hitchcock og Carl Emil Lauridsen:**
 - fzw199
 - B
 - C
