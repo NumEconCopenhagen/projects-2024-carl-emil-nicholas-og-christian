@@ -2,8 +2,8 @@
 
 **Christian Skinhøj, Nicholas Hitchcock and Carl Emil Lauridsen:**
 - fzw199
-- B
-- C
+- tgj939
+- hqg927
 
 This repository contains  
 1. Inaugural project. 
