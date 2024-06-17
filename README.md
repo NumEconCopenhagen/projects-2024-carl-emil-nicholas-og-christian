@@ -1,9 +1,6 @@
 # \[Christian, Nicholas and Carl Emil 2024\]
 
-**Christian Skinhøj, Nicholas Hitchcock and Carl Emil Lauridsen:**
-- fzw199
-- tgj939
-- hqg927
+**Christian Skinhøj (fzw199), Nicholas Hitchcock (tgj939) and Carl Emil Lauridsen (hqg927):**
 
 This repository contains  
 1. Inaugural project. 
