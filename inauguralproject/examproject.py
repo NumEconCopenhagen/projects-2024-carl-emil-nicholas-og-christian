@@ -118,9 +118,3 @@ class Problem3:
         # Step 7: Print the results
         print(f"Approximation of f(y): {f_y_approx}")
         print(f"True value of f(y): {f_y_true}")
-        print(f"Approximation of y: {y_approx}")
-        print(f"True values of y: {true_y}")
-
-        # Step 8: Check the difference between the approximate and true y values
-        diff_y = np.round(true_y - y_approx, 3)
-        print(f"Difference between true y and approximate y: {diff_y}")
