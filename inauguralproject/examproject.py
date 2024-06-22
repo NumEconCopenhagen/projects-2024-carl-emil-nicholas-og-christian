@@ -80,7 +80,7 @@ class Problem3:
     def print_values(self):
         return self.A, self.B, self.C, self.D
 
-   # Question 3.3: Approximate f(y) and compare with true value
+    # Question 3.3: Approximate f(y) and compare with true value
     def approximate_f_y(self):
         # Step 1: Define the function to compute the value of f(x)
         f = lambda x: x[0] * x[1]
@@ -124,20 +124,3 @@ class Problem3:
         # Step 8: Check the difference between the approximate and true y values
         diff_y = np.round(true_y - y_approx, 3)
         print(f"Difference between true y and approximate y: {diff_y}")
-
-       # Question 4: Repeat question 3 for all points in the set Y
-    def approximate_f_Y(self, Y):
-        results = []
-        f = lambda x: x[0] * x[1]  # Function to compute the value of f(x)
-        for y in Y:
-            self.y = np.round(np.array(y), 3)  # Set y to the current point and round it
-            self.find_all_points()  # Find A, B, C, D for the current y
-
-            # Compute the values of f at points A, B, C, and D
-            f_A = f(self.A)
-            f_B = f(self.B)
-            f_C = f(self.C)
-            f_D = f(self.D)
-
-            # Compute the barycentric coordinates of y with respect to triangles ABC and CDA
-            r_ABC = self.barycentric_coordinates(self.y, self.A, self.B
