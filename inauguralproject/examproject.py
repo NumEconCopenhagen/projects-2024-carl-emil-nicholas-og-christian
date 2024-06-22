@@ -2,36 +2,37 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Problem3:
-    def __init__(self, seed=2024, num_points=50): # Set the seed and the number of points
+    def __init__(self, seed=2024, num_points=50): 
         self.seed = seed 
         self.num_points = num_points 
         self.rng = np.random.default_rng(seed) 
-        self.X = self.rng.uniform(size=(num_points, 2)) # Randomly generate the points X
-        self.y = self.rng.uniform(size=(2,)) # Randomly generate the point y
+        self.X = np.round(self.rng.uniform(size=(num_points, 2)), 3) # Randomly generate the points X, rounded to 3 decimals
+        self.y = np.round(self.rng.uniform(size=(2,)), 3) # Randomly generate the point y, rounded to 3 decimals
         self.A = None 
         self.B = None
         self.C = None
         self.D = None
 
-    def find_A(self): # Define the method to find the point A
+    # Question 3.1: Finding points A, B, C, and D
+    def find_A(self): 
         self.A = min([x for x in self.X if x[0] > self.y[0] and x[1] > self.y[1]], 
                      key=lambda x: np.sqrt((x[0] - self.y[0])**2 + (x[1] - self.y[1])**2))
-        return self.A
+        return np.round(self.A, 3)
 
-    def find_B(self): # Define the method to find the point B
+    def find_B(self): 
         self.B = min([x for x in self.X if x[0] > self.y[0] and x[1] < self.y[1]], 
                      key=lambda x: np.sqrt((x[0] - self.y[0])**2 + (x[1] - self.y[1])**2))
-        return self.B
+        return np.round(self.B, 3)
 
-    def find_C(self): # Define the method to find the point C
+    def find_C(self): 
         self.C = min([x for x in self.X if x[0] < self.y[0] and x[1] < self.y[1]], 
                      key=lambda x: np.sqrt((x[0] - self.y[0])**2 + (x[1] - self.y[1])**2))
-        return self.C
+        return np.round(self.C, 3)
 
-    def find_D(self): # Define the method to find the point D
+    def find_D(self): 
         self.D = min([x for x in self.X if x[0] < self.y[0] and x[1] > self.y[1]], 
                      key=lambda x: np.sqrt((x[0] - self.y[0])**2 + (x[1] - self.y[1])**2))
-        return self.D
+        return np.round(self.D, 3)
 
     def find_all_points(self): 
         self.find_A() # Find point A
@@ -39,6 +40,17 @@ class Problem3:
         self.find_C() # Find point C
         self.find_D() # Find point D
         return self.A, self.B, self.C, self.D
+    
+    # Question 3.2: Barycentric coordinates and checking if y is inside the triangle
+    def barycentric_coordinates(self, y, A, B, C):
+        denom = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1])
+        r1 = ((B[1] - C[1]) * (y[0] - C[0]) + (C[0] - B[0]) * (y[1] - C[1])) / denom
+        r2 = ((C[1] - A[1]) * (y[0] - C[0]) + (A[0] - C[0]) * (y[1] - C[1])) / denom
+        r3 = 1 - r1 - r2
+        return np.round(r1, 3), np.round(r2, 3), np.round(r3, 3)
+
+    def is_inside_triangle(self, r):
+        return all(0 <= coord <= 1 for coord in r)
 
     def plot(self):
         self.find_all_points()
@@ -67,3 +79,65 @@ class Problem3:
 
     def print_values(self):
         return self.A, self.B, self.C, self.D
+
+   # Question 3.3: Approximate f(y) and compare with true value
+    def approximate_f_y(self):
+        # Step 1: Define the function to compute the value of f(x)
+        f = lambda x: x[0] * x[1]
+
+        # Step 2: Compute the values of f at points A, B, C, and D
+        f_A = f(self.A)
+        f_B = f(self.B)
+        f_C = f(self.C)
+        f_D = f(self.D)
+
+        # Step 3: Compute the barycentric coordinates of y with respect to triangles ABC and CDA
+        r_ABC = self.barycentric_coordinates(self.y, self.A, self.B, self.C)
+        r_CDA = self.barycentric_coordinates(self.y, self.C, self.D, self.A)
+
+        # Step 4: Determine which triangle y is inside and compute the approximation of f(y)
+        if self.is_inside_triangle(r_ABC):
+            f_y_approx = r_ABC[0] * f_A + r_ABC[1] * f_B + r_ABC[2] * f_C
+            y_approx = r_ABC[0] * self.A + r_ABC[1] * self.B + r_ABC[2] * self.C
+        elif self.is_inside_triangle(r_CDA):
+            f_y_approx = r_CDA[0] * f_C + r_CDA[1] * f_D + r_CDA[2] * f_A
+            y_approx = r_CDA[0] * self.C + r_CDA[1] * self.D + r_CDA[2] * self.A
+        else:
+            f_y_approx = np.nan
+            y_approx = np.nan
+
+        # Step 5: Compute the true value of f(y)
+        f_y_true = f(self.y)
+
+        # Step 6: Round results to three decimal places
+        f_y_approx = np.round(f_y_approx, 3)
+        f_y_true = np.round(f_y_true, 3)
+        y_approx = np.round(y_approx, 3)
+        true_y = np.round(self.y, 3)
+
+        # Step 7: Print the results
+        print(f"Approximation of f(y): {f_y_approx}")
+        print(f"True value of f(y): {f_y_true}")
+        print(f"Approximation of y: {y_approx}")
+        print(f"True values of y: {true_y}")
+
+        # Step 8: Check the difference between the approximate and true y values
+        diff_y = np.round(true_y - y_approx, 3)
+        print(f"Difference between true y and approximate y: {diff_y}")
+
+       # Question 4: Repeat question 3 for all points in the set Y
+    def approximate_f_Y(self, Y):
+        results = []
+        f = lambda x: x[0] * x[1]  # Function to compute the value of f(x)
+        for y in Y:
+            self.y = np.round(np.array(y), 3)  # Set y to the current point and round it
+            self.find_all_points()  # Find A, B, C, D for the current y
+
+            # Compute the values of f at points A, B, C, and D
+            f_A = f(self.A)
+            f_B = f(self.B)
+            f_C = f(self.C)
+            f_D = f(self.D)
+
+            # Compute the barycentric coordinates of y with respect to triangles ABC and CDA
+            r_ABC = self.barycentric_coordinates(self.y, self.A, self.B
