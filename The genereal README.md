@@ -20,7 +20,7 @@ The project can be found here: https://github.com/NumEconCopenhagen/projects-202
 
 We analyze the effect of technological growth and parametization of the savings rate in the Solow model by making an extenstion of the basic Solow model that allows for technological growth. We solve both the standard and extended model analytically and confirm the solution numerically using an algorithm. Furhtermore, we illustrate the solution and a simulation of the model graphically.
 
-The project can be found here: modelprojcet.ipynb
+The project can be found here: https://github.com/NumEconCopenhagen/projects-2024-carl-emil-nicholas-og-christian/blob/9cbcff22dd0f5682647c1383b5dec0c8828133d8/modelproject/modelproject.ipynb
 
 **4. Exam project**
 
