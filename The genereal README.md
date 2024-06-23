@@ -8,7 +8,7 @@ This repository contains the following 4 projcets:
 
 In this project, we analyze an exchange economy model with two consumers (A and B) and two goods (x1 and x2). We begin by illustrating the set of Pareto improvements in an Edgeworth box and proceed to solve various optimization problems to find market-clearing prices and allocations that maximize utility under different constraints. Finally, we consider random initial endowments and analyze the resulting market equilibrium allocations.
 
-The project can be found here: inauguralproject/inauguralproject.ipynb
+The project can be found here: [inauguralproject/inauguralproject.ipynb](https://github.com/NumEconCopenhagen/projects-2024-carl-emil-nicholas-og-christian/tree/1bcbfd739cffe98ec2013bd0588d587c51e46079/inauguralproject)
 
 **2. Data project**
 
