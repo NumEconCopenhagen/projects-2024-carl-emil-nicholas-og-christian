@@ -3,4 +3,4 @@ This projcet solves 3 seperate problems.
 - In the second problem we simulate a career choice model with 3 different career choices with changing assumptions about the known and unknown part of the payoff when working. We look at the share of graduates choosing each career, switching careers when allowed and a shift cost is introdcued and when the decisions are based on insigts from a varying number of friends working in the careers.
 - In the third and final problem we look at barycentric interplotation to analyze a given function.
 
-The project can be found here: https://github.com/NumEconCopenhagen/projects-2024-carl-emil-nicholas-og-christian/blob/92495751ebdb4fc48ab13cf5775e5c0197aed8c5/examproject/examproject.ipynb
+The project can be found here: 
