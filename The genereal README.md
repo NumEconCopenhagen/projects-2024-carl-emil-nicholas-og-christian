@@ -14,7 +14,7 @@ The project can be found here: inaguralproject.ipynb
 
 The project is named "A metaanalysis of the damage function in the DICE-23 model" and is inspired by our bachelor project. Our data consist of two metaanalysis from William Nordhaus and Richard Tol that combines 83 studies looking at the effect of increases in the global mean temperature on the world economy's output. We evaluate the functional form of the damage function based on a linear and quadratic regression of the datapoints from the combined datapoints of the two metaanalysis.
 
-The project can be found here: dataproject.ipynb
+The project can be found here: dataproject.ipynb dataproject.ipynb.
 
 **3. Model project**
 
