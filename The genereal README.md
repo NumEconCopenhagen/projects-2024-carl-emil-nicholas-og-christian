@@ -8,13 +8,13 @@ This repository contains the following 4 projcets:
 
 In this project, we analyze an exchange economy model with two consumers (A and B) and two goods (x1 and x2). We begin by illustrating the set of Pareto improvements in an Edgeworth box and proceed to solve various optimization problems to find market-clearing prices and allocations that maximize utility under different constraints. Finally, we consider random initial endowments and analyze the resulting market equilibrium allocations.
 
-The project can be found here: inaguralproject.ipynb
+The project can be found here: inauguralproject.ipynb
 
 **2. Data project**
 
 The project is named "A metaanalysis of the damage function in the DICE-23 model" and is inspired by our bachelor project. Our data consist of two metaanalysis from William Nordhaus and Richard Tol that combines 83 studies looking at the effect of increases in the global mean temperature on the world economy's output. We evaluate the functional form of the damage function based on a linear and quadratic regression of the datapoints from the combined datapoints of the two metaanalysis.
 
-The project can be found here: dataproject.ipynb dataproject.ipynb.
+The project can be found here: dataproject.ipynb
 
 **3. Model project**
 
