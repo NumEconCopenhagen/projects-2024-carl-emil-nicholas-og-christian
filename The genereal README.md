@@ -14,7 +14,7 @@ The project can be found here: [inauguralproject/inauguralproject.ipynb](https:/
 
 The project is named "A metaanalysis of the damage function in the DICE-23 model" and is inspired by our bachelor project. Our data consist of two metaanalysis from William Nordhaus and Richard Tol that combines 83 studies looking at the effect of increases in the global mean temperature on the world economy's output. We evaluate the functional form of the damage function based on a linear and quadratic regression of the datapoints from the combined datapoints of the two metaanalysis.
 
-The project can be found here: https://github.com/NumEconCopenhagen/projects-2024-carl-emil-nicholas-og-christian/blob/44b967f9cda92cd0530280b03767ac356c3d76f1/dataproject/dataproject.ipynb
+The project can be found here: https://github.com/NumEconCopenhagen/projects-2024-carl-emil-nicholas-og-christian/tree/44b967f9cda92cd0530280b03767ac356c3d76f1/dataproject
 
 **3. Model project**
 
